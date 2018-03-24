@@ -11,6 +11,7 @@ module.exports = {
   devServer: {
     contentBase: './build',
   },
+  plugins: [
     new CleanWebpackPlugin(['build']),
     new HtmlWebpackPlugin({
       template: './src/index.html',
