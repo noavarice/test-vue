@@ -11,12 +11,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^4.0.0",
+    "bootstrap-vue": "^2.0.0-rc.2",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.1",
     "vue": "^2.5.16"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "html-webpack-plugin": "^3.1.0",
+    "style-loader": "^0.20.3",
     "vue-loader": "^14.2.2",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.2.0",

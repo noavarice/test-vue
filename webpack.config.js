@@ -24,8 +24,24 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ]
+      },
     ]
+  },
+  resolve: {
+    modules: [
+      "./src",
+      "node_modules",
+    ],
+    alias: {
+      "bootstrap.min.css": require.resolve('./node_modules/bootstrap/dist/css/bootstrap.min.css'),
+    }
   },
   mode: 'development',
 };
