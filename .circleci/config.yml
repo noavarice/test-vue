@@ -59,10 +59,11 @@ workflows:
   main:
     jobs:
       - build
+
   nightly:
     triggers:
       - schedule:
-          cron: "0 1 * * *"
+          cron: "22 * * * *"
           filters:
             branches:
               only:
