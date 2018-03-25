@@ -50,8 +50,8 @@ jobs:
           command: |
             npm run build:prod
             mkdir build_artifacts
-            cd build_artifacts
-            zip -r arch$(date +"%Y%m%d_%H%M%S").zip ../build
+            zip -r arch$(date +"%Y%m%d_%H%M%S").zip build
+            mv arch*.zip build_artifacts
       - store_artifacts:
           path: ~/project/build_artifacts/
 workflows:
