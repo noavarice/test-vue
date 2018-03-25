@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build-dev:
+  build:
     docker:
       - image: circleci/node:9.2.1
 
@@ -46,4 +46,15 @@ jobs:
       - run:
           command: |
             npm run build:prod
-            zip -r arch$(date +"%Y%m%d_%H%M%S").zip build
+            zip -r arch.zip build
+      - store_artifacts:
+          path: /tmp/arch.zip
+          destination: arch$(date +"%Y%m%d_%H%M%S").zip 
+workflows:
+  version: 2
+  main:
+    jobs:
+      - build
+      - build-minified:
+          requires:
+            - build
