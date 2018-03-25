@@ -44,10 +44,11 @@ jobs:
       - run:
           command: |
             npm run build:prod
-            zip -r arch.zip build
+            mkdir build_artifacts
+            cd build_artifacts
+            zip -r arch$(date +"%Y%m%d_%H%M%S").zip ../build
       - store_artifacts:
-          path: ~/project/arch.zip
-          destination: arch$(date +"%Y%m%d_%H%M%S").zip 
+          path: ~/project/build_artifacts/arch*.zip
 workflows:
   version: 2
   main:
