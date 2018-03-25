@@ -46,7 +46,7 @@ jobs:
             npm run build:prod
             zip -r arch.zip build
       - store_artifacts:
-          path: /tmp/arch.zip
+          path: ~/project/arch.zip
           destination: arch$(date +"%Y%m%d_%H%M%S").zip 
 workflows:
   version: 2
