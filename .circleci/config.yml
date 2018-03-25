@@ -53,7 +53,7 @@ jobs:
             mkdir /tmp/build_artifacts
             mv arch*.zip /tmp/build_artifacts
       - store_artifacts:
-          path: ~/project/build_artifacts/
+          path: /tmp/build_artifacts
 workflows:
   version: 2
   main:
