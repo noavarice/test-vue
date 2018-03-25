@@ -62,10 +62,11 @@ workflows:
   nightly:
     triggers:
       - schedule:
-          cron: "50 * * * *"
+          cron: "0 1 * * *"
           filters:
             branches:
               only:
                 - master
+                - ci-nightly
     jobs:
       - build-minified
