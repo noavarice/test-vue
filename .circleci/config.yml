@@ -12,7 +12,9 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
-      - run: npm install
+      - run:
+          name: "Install dependencies"
+          command: npm install
 
       - save_cache:
           paths:
@@ -34,7 +36,9 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
-      - run: npm install
+      - run:
+          name: "Install dependencies"
+          command: npm install
 
       - save_cache:
           paths:
@@ -42,13 +46,14 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       - run:
+          name: "Create minified version artifact"
           command: |
             npm run build:prod
             mkdir build_artifacts
             cd build_artifacts
             zip -r arch$(date +"%Y%m%d_%H%M%S").zip ../build
       - store_artifacts:
-          path: ~/project/build_artifacts/arch*.zip
+          path: ~/project/build_artifacts/
 workflows:
   version: 2
   main:
