@@ -8,9 +8,6 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     filename: '[name].[chunkhash].js',
   },
-  devServer: {
-    contentBase: './build',
-  },
   plugins: [
     new CleanWebpackPlugin(['build']),
     new HtmlWebpackPlugin({
@@ -43,5 +40,4 @@ module.exports = {
       "bootstrap.min.css": require.resolve('./node_modules/bootstrap/dist/css/bootstrap.min.css'),
     }
   },
-  mode: 'development',
 };
