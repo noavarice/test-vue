@@ -49,9 +49,9 @@ jobs:
           name: "Create minified version artifact"
           command: |
             npm run build:prod
-            mkdir build_artifacts
             zip -r arch$(date +"%Y%m%d_%H%M%S").zip build
-            mv arch*.zip build_artifacts
+            mkdir /tmp/build_artifacts
+            mv arch*.zip /tmp/build_artifacts
       - store_artifacts:
           path: ~/project/build_artifacts/
 workflows:
