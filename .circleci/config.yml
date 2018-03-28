@@ -55,8 +55,7 @@ jobs:
 
       - run:
           name: "Create issue on failed build"
-          command: |
-                  curl -u noavarice:$TOKEN -d '{"title":"Nightly build failed","body":"Check out build:'$CIRCLE_BUILD_URL'"}' https://api.github.com/repos/VSUJira/test-vue/issues
+          command: curl -u "noavarice:$TOKEN" -d '{"title":"Nightly build failed","body":"Check out build: '$CIRCLE_BUILD_URL'"}' https://api.github.com/repos/VSUJira/test-vue/issues
           when: on_fail
 
       - store_artifacts:
@@ -71,10 +70,10 @@ workflows:
   nightly:
     triggers:
       - schedule:
-          cron: "40 20 * * *"
+          cron: "0 0 * * *"
           filters:
             branches:
               only:
-                - auto-issuing
+                - master
     jobs:
       - nightly-build-minified
