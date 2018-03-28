@@ -24,7 +24,7 @@ jobs:
       - run: npm run build:dev
       - run: npm run test
 
-  build-minified:
+  nightly-build-minified:
     docker:
       - image: circleci/node:9.2.1
 
@@ -52,8 +52,15 @@ jobs:
             zip -r arch$(date +"%Y%m%d_%H%M%S").zip build
             mkdir /tmp/build_artifacts
             mv arch*.zip /tmp/build_artifacts
+
+      - run:
+          name: "Create issue on failed build"
+          command: curl -u "noavarice:$TOKEN" -d '{"title":"Nightly build failed","body":"Check out build: '$CIRCLE_BUILD_URL'"}' https://api.github.com/repos/VSUJira/test-vue/issues
+          when: on_fail
+
       - store_artifacts:
           path: /tmp/build_artifacts
+
 workflows:
   version: 2
   main:
@@ -69,4 +76,4 @@ workflows:
               only:
                 - master
     jobs:
-      - build-minified
+      - nightly-build-minified
