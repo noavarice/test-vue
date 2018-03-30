@@ -13,7 +13,7 @@ export default {
   name: 'app',
   data() {
     return {
-      message: 'Hello, world!',
+      message: 'Hello, world, yopt!',
     }
   }
 }
